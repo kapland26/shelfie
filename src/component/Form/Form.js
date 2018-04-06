@@ -1,6 +1,7 @@
 import './../../reset.css';
 import './Form.css'
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Form extends Component{
 
@@ -41,7 +42,19 @@ class Form extends Component{
     }
 
     handleAdd(){
-        
+        let body={
+            url: this.state.urlIn,
+            name: this.state.nameIn,
+            price: this.state.priceIn
+        } 
+        axios.post("/api/product",body).then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            alert("Bad post!");
+        });
+        this.props.getProducts;
+        this.handleCancel();
     }
 
     render(){
@@ -60,7 +73,7 @@ class Form extends Component{
                 <input onChange={(e)=>this.handlePriceIn(e.target.value)} type="text" value={this.state.priceIn}/>
                 <br/>
                 <button onClick={()=>this.handleCancel()}> Cancel </button>
-                <button> Add to Inventory </button>
+                <button onClick={()=>this.handleAdd()}> Add to Inventory </button>
             </div>
         )
     }
