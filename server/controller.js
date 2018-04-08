@@ -20,4 +20,24 @@ module.exports = {
                 res.status(500).send(err) 
             });    
     },
+    delete:(req, res) => {
+        const connection = req.app.get('db');
+        
+        connection.delete_product([req.params.id])
+        .then( ()=> res.status(200).send())
+        .catch( (err) => {
+            console.log(err)
+            res.status(500).send(err) 
+        });   
+    },
+    update:(req, res) => {
+        const connection = req.app.get('db');
+        const {url,name, price} = req.body;
+        connection.create_product([url, name, price, req.params.id])
+        .then( ()=> res.status(200).send())
+        .catch( (err) => {
+            console.log(err)
+            res.status(500).send(err) 
+        });  
+    }
 }

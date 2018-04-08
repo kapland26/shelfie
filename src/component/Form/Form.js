@@ -12,8 +12,21 @@ class Form extends Component{
             urlIn: "",
             nameIn: "",
             priceIn: "",
+            buttonText: "Add to Inventory",
+            currSelect:null
         }
     }
+
+    // componentDidUpdate(oldProps){
+    //     if (this.props.currProd.id !== oldProps.id){
+    //         this.setState={
+    //             urlIn: this.props.currProd.url,
+    //             nameIn: this.props.currProd.name,
+    //             priceIn: this.props.currProd.price,
+    //             buttonText: "Save Changes"
+    //         }
+    //     }
+    // }
 
     handleUrlIn(e){
         this.setState({
@@ -57,6 +70,20 @@ class Form extends Component{
         this.handleCancel();
     }
 
+    handleUpdate(){
+        let body= {
+            url: this.state.urlIn,
+            name: this.state.nameIn,
+            price: this.state.priceIn
+        }
+        axios.put("/api/product"+this.props.id, body).then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+
     render(){
         return(
             <div className = "Form" >
@@ -73,7 +100,7 @@ class Form extends Component{
                 <input onChange={(e)=>this.handlePriceIn(e.target.value)} type="text" value={this.state.priceIn}/>
                 <br/>
                 <button onClick={()=>this.handleCancel()}> Cancel </button>
-                <button onClick={()=>this.handleAdd()}> Add to Inventory </button>
+                <button onClick={()=>this.handleAdd()}> {this.state.buttonText} </button>
             </div>
         )
     }

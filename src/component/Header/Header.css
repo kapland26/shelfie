@@ -7,5 +7,15 @@
     font-size: 30px;
     align-items: center;
     display: flex;
-    padding-left: 30px;    
+    padding-left: 30px;   
+}
+
+.logo-title-cont{
+    align-items: center;
+    display: flex; 
+    margin-right: 30px;
+}
+
+.Header button{
+    margin-right: 10px;
 }
