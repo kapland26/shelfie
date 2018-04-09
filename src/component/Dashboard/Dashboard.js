@@ -15,6 +15,7 @@ class Dashboard extends Component{
     }
 
     deleteProd(id){
+        console.log("Inside component delete!");
         axios.delete("/api/product/"+id).then( (res) => {
             console.log(res);
         })
@@ -28,8 +29,8 @@ class Dashboard extends Component{
         var prodList = this.props.products.map((val, i)=>{
             return(
                 <div className="prod-container" key={i}>
-                    {/* <Product setSelected = {this.props.setSelected} deleteProd = {this.deleteProd} id={val.id} url = {val.url} name= {val.name} price={val.price} /> */}
-                    <Product deleteProd = {this.deleteProd} id={val.id} url = {val.url} name= {val.name} price={val.price} /> 
+                    <Product setSelected = {this.props.setSelected} deleteProd = {this.deleteProd} id={val.id} url = {val.url} name= {val.name} price={val.price} />
+                    {/* <Product deleteProd = {this.deleteProd} id={val.id} url = {val.url} name= {val.name} price={val.price} />  */}
                 </div>
             )
         })

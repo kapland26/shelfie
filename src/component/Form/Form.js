@@ -17,16 +17,20 @@ class Form extends Component{
         }
     }
 
-    // componentDidUpdate(oldProps){
-    //     if (this.props.currProd.id !== oldProps.id){
-    //         this.setState={
-    //             urlIn: this.props.currProd.url,
-    //             nameIn: this.props.currProd.name,
-    //             priceIn: this.props.currProd.price,
-    //             buttonText: "Save Changes"
-    //         }
-    //     }
-    // }
+    componentDidUpdate(oldProps){
+        console.log(this.props.currProd)
+        if(this.props.currProd!=this.state.currSelect){
+            console.log("In if" + this.props.currProd.url)
+            this.setState({
+                urlIn: this.props.currProd.url,
+                nameIn: this.props.currProd.name,
+                priceIn: this.props.currProd.price,
+                currSelect: this.props.currProd,
+                buttonText: "Save Changes"
+            })
+            console.log(this.state.nameIn)
+        }
+    }
 
     handleUrlIn(e){
         this.setState({
@@ -50,7 +54,9 @@ class Form extends Component{
         this.setState({
             urlIn: "",
             nameIn: "",
-            priceIn: ""
+            priceIn: "",
+            buttonText: "Add to Inventory",
+            currSelect:null
         })
     }
 

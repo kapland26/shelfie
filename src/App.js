@@ -19,7 +19,7 @@ class App extends Component {
       paramId:""
     }
     this.getProducts= this.getProducts.bind(this);
-    // this.setSelected= this.setSelected.bind(this);
+    this.setSelected= this.setSelected.bind(this);
   }
 
   componentDidMount(){
@@ -35,12 +35,12 @@ class App extends Component {
       }
     );
   }
-  // setSelected(prod){
-    // console.log("In set selected! prod: "+prod);
-    // this.setState({
-    //   currProd: prod
-    // })
-  // }
+  setSelected(prod){
+    console.log("In set selected! prod: "+prod);
+    this.setState({
+      currProd: prod
+    })
+  }
 
   render() {
     return (
@@ -48,12 +48,12 @@ class App extends Component {
         <Header />
         <div className="body-container">
           <div className="dash-container">
-            {/* <Dashboard setSelected = {this.setSelected()} getProducts = {this.getProducts()} products={this.state.products}/> */}
-            <Dashboard getProducts = {this.getProducts()} products={this.state.products}/>
+            <Dashboard setSelected = {this.setSelected} getProducts = {this.getProducts} products={this.state.products}/>
+            {/* <Dashboard getProducts = {this.getProducts()} products={this.state.products}/> */}
 
           </div>
           <div className="form-container">
-            <Form currProd = {this.state.currProd} getProducts = {this.getProducts()} />
+            <Form currProd = {this.state.currProd} getProducts = {this.getProducts} />
           </div>
         </div>
       </div>
