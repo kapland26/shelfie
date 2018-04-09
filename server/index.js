@@ -11,6 +11,7 @@ app.use( cors() );
 massive( process.env.CONNECTION_STRING ).then( connection => app.set('db', connection) );
 
 app.get("/api/inventory", sc.read);
+app.get("/api/product/:id", sc.getOne);
 app.post("/api/product", sc.create);
 app.delete("/api/product/:id", sc.delete);
 app.put("/api/product/:id", sc.update);

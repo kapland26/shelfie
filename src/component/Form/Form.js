@@ -17,16 +17,22 @@ class Form extends Component{
         }
     }
 
-    // componentDidUpdate(oldProps){
-    //     if (this.props.currProd.id !== oldProps.id){
-    //         this.setState={
-    //             urlIn: this.props.currProd.url,
-    //             nameIn: this.props.currProd.name,
-    //             priceIn: this.props.currProd.price,
-    //             buttonText: "Save Changes"
-    //         }
-    //     }
-    // }
+    componentDidMount(){
+        if(this.props.match.params.id){
+            console.log("In component did mount : " +this.props.match.params.id)
+            axios.get("/api/product/"+this.props.match.params.id).then((res)=> {
+                this.setState({
+                    currSelect: res.data[0]
+                })
+            }).catch(function (error) {
+                console.log(error);
+            });
+            // var {url,  name, price} = this.state.currSelect;
+            console.log(this.state.currSelect);
+            // this.setState{
+            // }
+        }
+    }
 
     handleUrlIn(e){
         this.setState({
@@ -71,17 +77,17 @@ class Form extends Component{
     }
 
     handleUpdate(){
-        let body= {
-            url: this.state.urlIn,
-            name: this.state.nameIn,
-            price: this.state.priceIn
-        }
-        axios.put("/api/product"+this.props.id, body).then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+        // let body= {
+        //     url: this.state.urlIn,
+        //     name: this.state.nameIn,
+        //     price: this.state.priceIn
+        // }
+        // axios.put("/api/product"+this.props.id, body).then(function (response) {
+        //     console.log(response);
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
     }
 
     render(){

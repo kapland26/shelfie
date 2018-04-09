@@ -1,3 +1,8 @@
+.Product{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 
 .Product image-container{
     height: 200px;
@@ -8,5 +13,16 @@
     overflow: hidden;
 }
 
-.Product img{
+.Product text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
 }

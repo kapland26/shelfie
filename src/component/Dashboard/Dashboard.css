@@ -1,4 +1,13 @@
 .prod-container{
-    background: red;
+    background: teal;
     padding-top: 0px;
 }
+
+
+.Dashboard{
+    width:350px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
