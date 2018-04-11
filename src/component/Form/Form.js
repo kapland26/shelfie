@@ -17,22 +17,22 @@ class Form extends Component{
         }
     }
 
-    componentDidMount(){
-        if(this.props.match.params.id){
-            console.log("In component did mount : " +this.props.match.params.id)
-            axios.get("/api/product/"+this.props.match.params.id).then((res)=> {
-                this.setState({
-                    currSelect: res.data[0]
-                })
-            }).catch(function (error) {
-                console.log(error);
-            });
-            // var {url,  name, price} = this.state.currSelect;
-            console.log(this.state.currSelect);
-            // this.setState{
-            // }
+    componentDidUpdate(oldProps){
+        console.log("component did update")
+        console.log(this.props.currProd)
+        if(this.props.currProd!==this.state.currSelect){
+            console.log("In if" + this.props.currProd.url)
+            this.setState({
+                urlIn: this.props.currProd.url,
+                nameIn: this.props.currProd.name,
+                priceIn: this.props.currProd.price,
+                currSelect: this.props.currProd,
+                buttonText: "Save Changes"
+            })
+            console.log(this.state.nameIn)
         }
     }
+
 
     handleUrlIn(e){
         this.setState({
